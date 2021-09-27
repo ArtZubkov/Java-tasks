@@ -26,8 +26,7 @@ public class Main {
     public static void first() {
         int[] bin = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
         for (int i = 0; i < bin.length; i++) {
-            if (bin[i] == 0) bin[i] = 1;
-            else if (bin[i] == 1) bin[i] = 0;
+            bin[i] = bin[i] ^ 1;
         }
         System.out.println("-1 task-");
         System.out.println(Arrays.toString(bin));
@@ -38,14 +37,18 @@ public class Main {
         System.out.println("\n-2 task-");
         Scanner input = new Scanner(System.in);
         System.out.println("Enter 8 elements: ");
-        for (int i = 0; i < nums.length; i++) nums[i] = input.nextInt();
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = input.nextInt();
+        }
         System.out.println(Arrays.toString(nums));
     }
 
     public static void third() {
         int[] nums = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] < 6) nums[i] = nums[i] * 2;
+            if (nums[i] < 6) {
+                nums[i] = nums[i] * 2;
+            }
         }
         System.out.println("\n-3 task-");
         System.out.println(Arrays.toString(nums));
@@ -62,13 +65,23 @@ public class Main {
             matrix[n - i - 1][i] = 1;
         }
         System.out.println("\n-4 task-");
-        for (int i = 0; i < n; i++) System.out.println(Arrays.toString(matrix[i]));
+        for (int i = 0; i < n; i++) {
+            System.out.println(Arrays.toString(matrix[i]));
+        }
     }
 
     public static void fifth() {
         int[] nums = {4, 7, 15, -6, 8};
-        int max = Arrays.stream(nums).max().getAsInt();
-        int min = Arrays.stream(nums).min().getAsInt();
+        int max = nums[0];  //Arrays.stream(nums).max().getAsInt();
+        int min = nums[0];  //Arrays.stream(nums).min().getAsInt();
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > max) {
+                max = nums[i];
+            }
+            if (nums[i] < min) {
+                min = nums[i];
+            }
+        }
         System.out.println("\n-5 task-");
         System.out.println("Maximum: " + max);
         System.out.println("Minimum: " + min);
@@ -77,15 +90,21 @@ public class Main {
     public static boolean sixth(int[] nums) {
         if (nums.length == 0) throw new NullPointerException();
 
-        int sum_left = 0;
+        int sum_left = nums[0];
         int sum_right = 0;
+        //int totalSum = IntStream.of(nums).sum();
+        for (int i = 1; i < nums.length; i++) {
+            sum_right += nums[i];
+        }
+
         boolean bool = false;
 
-        for (int i = 0; i < nums.length - 1; i++) {
+        for (int i = 1; i < nums.length - 1; i++) {
+            if (sum_left == sum_right) {
+                bool = true;
+            }
             sum_left += nums[i];
-            for (int j = i + 1; j < nums.length; j++) sum_right += nums[j];
-            if (sum_left == sum_right) bool = true;
-            sum_right = 0;
+            sum_right -= nums[i];
         }
         return bool;
     }
