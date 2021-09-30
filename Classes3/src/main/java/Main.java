@@ -6,25 +6,19 @@ public class Main {
         //Cat brit = new Cat();
 
         Cat[] cats = new Cat[3];
-        cats[0] = new Cat();
-        cats[1] = new Cat();
-        cats[2] = new Cat();
+        cats[0] = new Cat(40);
+        cats[1] = new Cat(70);
+        cats[2] = new Cat(50);
 
         int paramFood = 50; // кол-во еды для каждого кота
 
-        for (int i = 0; i < cats.length; i++) {
-
-            if (plate.getAmount() >= paramFood) {
-                cats[i].eat(paramFood);
-                plate.eating(paramFood);
-            }
-
+        for (Cat cat : cats) {
+            cat.eat(plate, paramFood);
         }
 
         for (int i = 0; i < cats.length; i++) {
             System.out.println("Cat" + (i + 1) + ": " + cats[i].getSatiety());
         }
-
 
     }
 }

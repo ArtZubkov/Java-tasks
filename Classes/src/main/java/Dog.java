@@ -11,20 +11,17 @@ public class Dog extends Animal {
 
     @Override
     public void run(int length) {
-        boolean flag = (length <= this.limit);
-        System.out.println("run: " + flag);
+        System.out.println("run: " + (length <= this.limit));
     }
 
     @Override
     public void swim(int length) {
-        boolean flag = (length <= 10);
-        System.out.println("swim: " + flag);
+        System.out.println("swim: " + (length <= 10));
     }
 
     @Override
     public void jump(int height) {
-        boolean flag = (height <= 0.5);
-        System.out.println("jump: " + flag);
+        System.out.println("jump: " + (height <= 0.5));
     }
 
 }

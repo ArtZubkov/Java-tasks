@@ -10,7 +10,7 @@ public class Plate {
         this.amount += addEat;
     }
 
-    public void eating(int paramFood) {
+    public void wasEaten(int paramFood) {
         this.amount -= paramFood;
     }
 

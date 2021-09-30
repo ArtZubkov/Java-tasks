@@ -74,7 +74,7 @@ public class Main {
                 }
             }
 
-            if (!Objects.equals(answer, word)) {
+            if (!answer.equals(word)) {
                 System.out.println("Try again.\n " + prompt);
             } else {
                 guessing = false;
