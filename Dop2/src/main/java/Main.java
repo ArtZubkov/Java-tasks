@@ -7,9 +7,14 @@ public class Main {
 
     public static void main(String[] args) {
         //task1();
-        task2();
+        //task2();
+
+        // task3
+        int[] nums = {2, 5, 7, 9, 8, 10, 7};
+        System.out.println(Arrays.toString(task3(nums, 7)));
 
     }
+
 
     public static void task1() {
         Scanner input = new Scanner(System.in);
@@ -66,8 +71,34 @@ public class Main {
         System.out.println(simpleNums.toString());
     }
 
-    public static void task3() {
-        int[] nums = new int[];
+    public static int[] task3(int[] nums, int item) {
+
+        int amountItem = 0;
+
+        for (int num : nums) {
+            if (num == item) {
+                amountItem++;
+            }
+        }
+
+        int[] newNums = new int[nums.length - amountItem];
+        int offset = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == item) {
+                offset++;
+            } else {
+                newNums[i - offset] = nums[i];
+            }
+        }
+
+        return newNums;
+
+    }
+
+
+    public static void task5() {
+
     }
 
 }
