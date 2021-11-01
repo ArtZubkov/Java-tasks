@@ -1,17 +1,33 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        //task1();
-        //task2();
+        System.out.println("--Task1--");
+        task1();
+        System.out.println("--Task2--");
+        task2();
 
         // task3
+        System.out.println("--Task3--");
         int[] nums = {2, 5, 7, 9, 8, 10, 7};
         System.out.println(Arrays.toString(task3(nums, 7)));
+
+        // task4
+        //System.out.println("--Task4--");
+        /*int[] values = {1, 2, 3};
+        int[] weights = {1, 2, 10};
+        Task4 task4 = new Task4(values, weights);
+        System.out.println(task4.returnItem());
+        */
+
+        //System.out.println("--Task5--");
+        //task5();
+
+        // task6
+        System.out.println("--Task6--");
+        System.out.println(BaseConverter.convertToKelvin(25) + "K");
+        System.out.println(BaseConverter.convertToFahrenheit(42) + "F");
 
     }
 
@@ -98,6 +114,31 @@ public class Main {
 
 
     public static void task5() {
+
+        String text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et dolor interdum, tristique arcu sed, egestas augue. " +
+                "Fusce quis venenatis sem, id egestas odio. Donec vitae pulvinar odio, eget vehicula urna. " +
+                "Maecenas rhoncus vestibulum orci ac mollis. Fusce euismod, libero quis pellentesque tristique, sapien nunc pretium neque, et consectetur ex sem sit amet ipsum. " +
+                "Duis sollicitudin dapibus felis, at mollis sapien elementum condimentum. Phasellus nunc nibh, pellentesque venenatis nibh vitae, feugiat convallis magna. " +
+                "Nam congue turpis eget porta semper. Cras sed sapien non lacus ullamcorper porttitor. In hendrerit volutpat ornare.";
+
+        Map<Character, Integer> dict = new TreeMap<>();
+
+        for (int i = 0; i < text.length(); i++) {
+            char current_char = text.charAt(i);
+            if (current_char >= 65 && current_char <= 90 || current_char >= 97 && current_char <= 122) {
+                if (!dict.containsKey(current_char)) {
+                    dict.put(current_char, 1); // Инициализируем ключ, если его еще не встречалось
+                } else {
+                    dict.put(current_char, dict.get(current_char) + 1); // Итерируем кол-во, если ключ уже записан в карте
+                }
+            }
+        }
+
+        for (Map.Entry entry : dict.entrySet()) {
+            Character key = (Character) entry.getKey();
+            int value = (int) entry.getValue();
+            System.out.println(key + ": " + value);
+        }
 
     }
 

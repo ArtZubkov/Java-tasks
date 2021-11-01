@@ -1,1 +1,6 @@
-/.idea
+# Folders ignore
+.idea
+target
+
+# Files ignore
+*.xml
